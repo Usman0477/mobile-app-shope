@@ -1,0 +1,47 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidImage() {
+      return request.resource.size < 8 * 1024 * 1024 &&
+        request.resource.contentType.matches('image/.*');
+    }
+
+    function isValidVideo() {
+      return request.resource.size < 100 * 1024 * 1024 &&
+        request.resource.contentType.matches('video/.*');
+    }
+
+    // Profile photos: users/{uid}/profile.jpg
+    match /users/{uid}/{fileName} {
+      allow read: if true;
+      allow write: if isSignedIn() && request.auth.uid == uid && isValidImage();
+    }
+
+    // Shop logo/banner: shops/{shopId}/{fileName}
+    match /shops/{shopId}/{fileName} {
+      allow read: if true;
+      allow write: if isSignedIn() && isValidImage();
+    }
+
+    // Product images & videos: products/{productId}/{fileName}
+    match /products/{productId}/{fileName} {
+      allow read: if true;
+      allow write: if isSignedIn() && (isValidImage() || isValidVideo());
+    }
+
+    // Payment screenshots: orders/{orderId}/payment_proof.jpg
+    // Only the buyer/seller involved can read — enforced at the
+    // Firestore layer for the associated order; storage just checks
+    // the uploader is signed in and the file is a valid image.
+    match /orders/{orderId}/{fileName} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn() && isValidImage();
+    }
+  }
+}

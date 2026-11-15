@@ -1,0 +1,31 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "dir-shopping-store",
+          "appId": "1:811438630571:android:64851ee32ffea1ffdf39ee",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "dir-shopping-store",
+          "configurations": {
+            "android": "1:811438630571:android:64851ee32ffea1ffdf39ee",
+            "ios": "1:811438630571:ios:79474d0d00bc1eb0df39ee",
+            "macos": "1:811438630571:ios:79474d0d00bc1eb0df39ee",
+            "web": "1:811438630571:web:da10ed68c5090172df39ee",
+            "windows": "1:811438630571:web:ea0a9f64d24c9293df39ee"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "database": "(default)",
+    "location": "asia-south1",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
