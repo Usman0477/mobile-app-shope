@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "811438630571",
+    "project_id": "dir-shopping-store",
+    "storage_bucket": "dir-shopping-store.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811438630571:android:64851ee32ffea1ffdf39ee",
+        "android_client_info": {
+          "package_name": "com.dirshoppingstore.dir_shopping_store"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPNh6ldaAz0VMnHRPwtNtbKOxV9TEpFlE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
